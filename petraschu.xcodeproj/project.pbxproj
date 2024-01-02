@@ -22,7 +22,7 @@
 		990AA2D72B3AE7E40039A38E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		997ECBB72B39841200D4A81F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "앱 로딩 화면.jpg"; path = "../../../Downloads/앱 로딩 화면.jpg"; sourceTree = "<group>"; };
-		99F725A52B2C5DF700F7A702 /* petraschu_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petraschu_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99F725A52B2C5DF700F7A702 /* petraschu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petraschu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F725A82B2C5DF700F7A702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		99F725AC2B2C5DF700F7A702 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		99F7259C2B2C5DF700F7A702 = {
 			isa = PBXGroup;
 			children = (
-				99F725A72B2C5DF700F7A702 /* petraschu_APP */,
+				99F725A72B2C5DF700F7A702 /* petraschu */,
 				99F725A62B2C5DF700F7A702 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +54,12 @@
 		99F725A62B2C5DF700F7A702 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99F725A52B2C5DF700F7A702 /* petraschu_APP.app */,
+				99F725A52B2C5DF700F7A702 /* petraschu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		99F725A72B2C5DF700F7A702 /* petraschu_APP */ = {
+		99F725A72B2C5DF700F7A702 /* petraschu */ = {
 			isa = PBXGroup;
 			children = (
 				99F725A82B2C5DF700F7A702 /* AppDelegate.swift */,
@@ -72,15 +72,15 @@
 				99F725B62B2C5DF800F7A702 /* Info.plist */,
 				997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */,
 			);
-			path = petraschu_APP;
+			path = petraschu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		99F725A42B2C5DF700F7A702 /* petraschu_APP */ = {
+		99F725A42B2C5DF700F7A702 /* petraschu */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu_APP" */;
+			buildConfigurationList = 99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu" */;
 			buildPhases = (
 				99F725A12B2C5DF700F7A702 /* Sources */,
 				99F725A22B2C5DF700F7A702 /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = petraschu_APP;
+			name = petraschu;
 			productName = petraschu_APP;
-			productReference = 99F725A52B2C5DF700F7A702 /* petraschu_APP.app */;
+			productReference = 99F725A52B2C5DF700F7A702 /* petraschu.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 99F725A02B2C5DF700F7A702 /* Build configuration list for PBXProject "petraschu_APP" */;
+			buildConfigurationList = 99F725A02B2C5DF700F7A702 /* Build configuration list for PBXProject "petraschu" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = ko;
 			hasScannedForEncodings = 0;
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				99F725A42B2C5DF700F7A702 /* petraschu_APP */,
+				99F725A42B2C5DF700F7A702 /* petraschu */,
 			);
 		};
 /* End PBXProject section */
@@ -306,13 +306,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = L47A4526FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = petraschu_APP/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다. (항상 or 앱을 사용하는 동안 위치정보를 수신합니다.)";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다. (항상 위치정보를 수신합니다.)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다. (앱을 사용하는 동안에만 위치정보를 수신합니다.)";
+				INFOPLIST_FILE = petraschu/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자 맞춤 서비스 제공을 위해 권한을 허용해주세요. 애플 정책 기반 개인화된 광고 제공 목적으로만 사용됩니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -340,13 +341,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = L47A4526FL;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = petraschu_APP/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치정보 권한이 필요합니다. (항상 or 앱을 사용하는 동안 위치정보를 수신합니다.)";
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치정보 권한이 필요합니다. (항상 위치정보를 수신합니다.)";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치정보 권한이 필요합니다. (앱을 사용하는 동안에만 위치정보를 수신합니다.)";
+				INFOPLIST_FILE = petraschu/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 기반 서비스 제공을 위해 권한을 허용해주세요. 현재 사용자의 위치를 기반으로 주변 동물병원을 찾기 위해서 활용됩니다.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "사용자 맞춤 서비스 제공을 위해 권한을 허용해주세요. 애플 정책 기반 개인화된 광고 제공 목적으로만 사용됩니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -371,7 +373,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		99F725A02B2C5DF700F7A702 /* Build configuration list for PBXProject "petraschu_APP" */ = {
+		99F725A02B2C5DF700F7A702 /* Build configuration list for PBXProject "petraschu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				99F725B72B2C5DF800F7A702 /* Debug */,
@@ -380,7 +382,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu_APP" */ = {
+		99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				99F725BA2B2C5DF800F7A702 /* Debug */,

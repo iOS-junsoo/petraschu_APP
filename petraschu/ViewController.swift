@@ -8,6 +8,8 @@
 import UIKit
 import WebKit
 import CoreLocation
+import AdSupport
+import AppTrackingTransparency
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
@@ -18,15 +20,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var loginType: String = ""
     var locationManager: CLLocationManager!
     var firstLogin: Bool = false
+    var createWebView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+   
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
-          
-        // 위치권한 팝업 함수
-        locationManager.requestWhenInUseAuthorization()
+        
+       
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    // 사용자에게 추적 권한을 요청합니다.
+                    ATTrackingManager.requestTrackingAuthorization { status in
+                        switch status {
+                        case .authorized:
+                            print("Authorized, 사용자가 추적을 허용 함")
+                            
+                            // 사용자가 추적을 허용을 했으므로, IDFA를 사용 가능 함
+                            print(ASIdentifierManager.shared().advertisingIdentifier)
+                            // 위치권한 팝업 함수
+                            self.locationManager.requestWhenInUseAuthorization()
+                        case .denied:
+                            print("Denied, 사용자가 추적을 거부 함")
+                            self.locationManager.requestWhenInUseAuthorization()
+                        case .notDetermined:
+                            print("Not Determined, 추적 권한 요청이 나타나지 않음")
+                            self.locationManager.requestWhenInUseAuthorization()
+                        case .restricted:
+                            print("Restricted, 추적 권한 요청이 제한 됨")
+                            self.locationManager.requestWhenInUseAuthorization()
+                        @unknown default:
+                            print("Unknown")
+                            self.locationManager.requestWhenInUseAuthorization()
+                        }
+                    }
+                }
+        
+    
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
@@ -54,6 +87,8 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping
     (WKNavigationActionPolicy) -> Void) {
+        
+        
         
         decisionHandler(.allow)
         
@@ -136,14 +171,10 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
     }
     
     
-    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-   
-            if navigationAction.targetFrame == nil {
-                webView.load(navigationAction.request)
-            }
-            return nil
-    }
+ 
     
+    
+    //MARK: 자바스크립트 처리
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo,
                  completionHandler: @escaping () -> Void) {
 
@@ -197,6 +228,19 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
         present(alertController, animated: true, completion: nil)
     }
 
+
+    
+    
+    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+   
+            if navigationAction.targetFrame == nil {
+                webView.load(navigationAction.request)
+            }
+            return nil
+   
+        
+    }
     
 }
 
