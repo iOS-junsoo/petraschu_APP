@@ -20,7 +20,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var loginType: String = ""
     var locationManager: CLLocationManager!
     var firstLogin: Bool = false
-    var createWebView: WKWebView?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
         
         loadWebPage("https://www.petraschu.com/")
         webView.allowsBackForwardNavigationGestures = true
@@ -92,6 +93,10 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
         
         decisionHandler(.allow)
         
+        guard let url = navigationAction.request.url else {
+            return
+        }
+        
         guard let url_Host = navigationAction.request.url?.host() else {
             return
         }
@@ -100,7 +105,7 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
             return
         }
         
-        print("URL: \(url_Host) \(url_Path)")
+        print("URL: \(url) | \(url_Host) | \(url_Path)")
         
         
         //MARK: - Kakao Login
@@ -137,8 +142,6 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.7) {
                 self.dismiss(animated: true)
             }
-            
-            print("1 \(firstLogin)")
         }
         
         
@@ -166,6 +169,13 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
         if String(describing: web_URL) == "about:blank" {
               decisionHandler(.allow)
               return
+        }
+        
+        //MARK: Open safari
+        //설명: url_Host에 다른 탭으로 전환하는 'mdirect가 있다면 사파리로 다른 탭 전환하기'
+        
+        if url_Host.hasPrefix("mdirect") {
+            UIApplication.shared.open(url)
         }
         
     }
@@ -238,7 +248,6 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
                 webView.load(navigationAction.request)
             }
             return nil
-   
         
     }
     
