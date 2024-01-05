@@ -20,6 +20,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var loginType: String = ""
     var locationManager: CLLocationManager!
     var firstLogin: Bool = false
+    var URL_HOST: String?
+    var URL_PATH: String?
     
     
     override func viewDidLoad() {
@@ -105,6 +107,9 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
             return
         }
         
+        URL_HOST = url_Host
+        URL_PATH = url_Path
+        
         print("URL: \(url) | \(url_Host) | \(url_Path)")
         
         
@@ -174,9 +179,15 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
         //MARK: Open safari
         //설명: url_Host에 다른 탭으로 전환하는 'mdirect가 있다면 사파리로 다른 탭 전환하기'
         
-        if url_Host.hasPrefix("mdirect") {
-            UIApplication.shared.open(url)
-        }
+//        print("pen safari : \(url_Host)")
+//        
+//        if url_Host.hasPrefix("mdirect") {
+//            UIApplication.shared.open(url)
+//        }
+//        
+//        if url_Host.hasPrefix("mstore") {
+//            UIApplication.shared.open(url)
+//        }
         
     }
     
@@ -243,12 +254,25 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
     
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-   
-            if navigationAction.targetFrame == nil {
-                webView.load(navigationAction.request)
+        
+            if navigationAction.targetFrame == nil { // 새창이 뜨는 상황
+                if URL_HOST == "www.petraschu.com" || URL_HOST == "www.google.com"  { //호스트가 펫트라슈, 구글인 경우 앱 자체에서 URL 전환
+                    webView.load(navigationAction.request)
+                } else { //이외의 상황에서는 사파리에서 오픈
+                    UIApplication.shared.open(navigationAction.request.url!)
+                }
             }
             return nil
         
+    }
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        guard let url = webView.url?.absoluteString else {
+            return
+        }
+        
+        print("리디 \(url)")
+
     }
     
 }
