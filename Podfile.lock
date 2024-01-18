@@ -1,0 +1,16 @@
+PODS:
+  - FlareLane (1.5.0)
+
+DEPENDENCIES:
+  - FlareLane (= 1.5.0)
+
+SPEC REPOS:
+  trunk:
+    - FlareLane
+
+SPEC CHECKSUMS:
+  FlareLane: 8d21c5cb9e591884b9ad862a1ca67e80144955c6
+
+PODFILE CHECKSUM: 7d920b340e98ee69390e0fe15b04b54fee21a94d
+
+COCOAPODS: 1.14.3

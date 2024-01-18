@@ -1,0 +1,6 @@
+framework module Pods_petraschu {
+  umbrella header "Pods-petraschu-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module FlareLane {
+  umbrella header "FlareLane-iOS16.0-umbrella.h"
+
+  export *
+  module * { export * }
+}

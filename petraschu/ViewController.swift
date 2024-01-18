@@ -270,8 +270,6 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
         guard let url = webView.url?.absoluteString else {
             return
         }
-        
-        print("리디 \(url)")
 
     }
     
