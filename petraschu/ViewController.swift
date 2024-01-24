@@ -1,7 +1,6 @@
 //
 //  ViewController.swift
 //  petraschu_APP
-//
 //  Created by 준수김 on 2023/12/15.
 //
 
@@ -34,7 +33,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
        
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     // 사용자에게 추적 권한을 요청합니다.
                     ATTrackingManager.requestTrackingAuthorization { status in
                         switch status {

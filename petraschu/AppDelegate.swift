@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FlareLane
 
 
 @main
@@ -14,8 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-                return true
+        UNUserNotificationCenter.current().delegate = self
+        // 알림 권한 팝업 타이밍을 제어하려면 세 번째 파라미터를 false로 설정 후 적절한 시점에 .subscribe() 함수 실행
+        FlareLane.initWithLaunchOptions(launchOptions, projectId: "1f13badc-fe56-429d-8961-d491d6316085", requestPermissionOnLaunch: true)
+        return true
     }
 
     // MARK: UISceneSession Lifecycle
@@ -31,7 +34,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        FlareLaneAppDelegate.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
+      }
 
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    FlareLaneNotificationCenter.shared.userNotificationCenter(center, willPresent: notification, withCompletionHandler: completionHandler)
+  }
+  func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    FlareLaneNotificationCenter.shared.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+  }
 }
 

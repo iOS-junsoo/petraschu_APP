@@ -9,19 +9,53 @@
 /* Begin PBXBuildFile section */
 		997ECBB82B39841200D4A81F /* LaunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997ECBB72B39841200D4A81F /* LaunchScreenViewController.swift */; };
 		997ECBBC2B39852800D4A81F /* 앱 로딩 화면.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */; };
+		999D88162B5FCDA6004B7F68 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999D88152B5FCDA6004B7F68 /* NotificationService.swift */; };
+		999D881A2B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		99F725A92B2C5DF700F7A702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725A82B2C5DF700F7A702 /* AppDelegate.swift */; };
 		99F725AB2B2C5DF700F7A702 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */; };
 		99F725AD2B2C5DF700F7A702 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725AC2B2C5DF700F7A702 /* ViewController.swift */; };
 		99F725B02B2C5DF700F7A702 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F725AE2B2C5DF700F7A702 /* Main.storyboard */; };
 		99F725B22B2C5DF800F7A702 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99F725B12B2C5DF800F7A702 /* Assets.xcassets */; };
 		99F725B52B2C5DF800F7A702 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99F725B32B2C5DF800F7A702 /* LaunchScreen.storyboard */; };
+		C1A01F7F00FA602441A094FD /* Pods_petraschu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEF97E8AF85892A273A6726A /* Pods_petraschu.framework */; };
+		FD75C33A9F43CC0295DDE3C2 /* Pods_FlareLaneNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73857EDDE95C3548A7E110A /* Pods_FlareLaneNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		999D88182B5FCDA6004B7F68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 99F7259D2B2C5DF700F7A702 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 999D88122B5FCDA6004B7F68;
+			remoteInfo = FlareLaneNotificationServiceExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		999D881E2B5FCDA6004B7F68 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				999D881A2B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		209332C7CE9B3EF01CEC97E6 /* Pods-FlareLaneNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlareLaneNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-FlareLaneNotificationServiceExtension/Pods-FlareLaneNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		61CDC219DAD1C032F5F031D9 /* Pods-FlareLaneNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlareLaneNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-FlareLaneNotificationServiceExtension/Pods-FlareLaneNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		990AA2D62B3AE7E40039A38E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		990AA2D72B3AE7E40039A38E /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		997ECBB72B39841200D4A81F /* LaunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenViewController.swift; sourceTree = "<group>"; };
 		997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "앱 로딩 화면.jpg"; path = "../../../Downloads/앱 로딩 화면.jpg"; sourceTree = "<group>"; };
+		999D880E2B5FCD81004B7F68 /* petraschu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = petraschu.entitlements; sourceTree = "<group>"; };
+		999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlareLaneNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		999D88152B5FCDA6004B7F68 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		999D88172B5FCDA6004B7F68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99F725A52B2C5DF700F7A702 /* petraschu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petraschu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F725A82B2C5DF700F7A702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,24 +64,60 @@
 		99F725B12B2C5DF800F7A702 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99F725B42B2C5DF800F7A702 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99F725B62B2C5DF800F7A702 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEF97E8AF85892A273A6726A /* Pods_petraschu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_petraschu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C69581F9B592357D2355CC8F /* Pods-petraschu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-petraschu.debug.xcconfig"; path = "Target Support Files/Pods-petraschu/Pods-petraschu.debug.xcconfig"; sourceTree = "<group>"; };
+		E0D48B076B0598F1F7963FF8 /* Pods-petraschu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-petraschu.release.xcconfig"; path = "Target Support Files/Pods-petraschu/Pods-petraschu.release.xcconfig"; sourceTree = "<group>"; };
+		F73857EDDE95C3548A7E110A /* Pods_FlareLaneNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlareLaneNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		999D88102B5FCDA6004B7F68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD75C33A9F43CC0295DDE3C2 /* Pods_FlareLaneNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99F725A22B2C5DF700F7A702 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1A01F7F00FA602441A094FD /* Pods_petraschu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13F1FE38F7D718E10E328FA3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				209332C7CE9B3EF01CEC97E6 /* Pods-FlareLaneNotificationServiceExtension.debug.xcconfig */,
+				61CDC219DAD1C032F5F031D9 /* Pods-FlareLaneNotificationServiceExtension.release.xcconfig */,
+				C69581F9B592357D2355CC8F /* Pods-petraschu.debug.xcconfig */,
+				E0D48B076B0598F1F7963FF8 /* Pods-petraschu.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		999D88142B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				999D88152B5FCDA6004B7F68 /* NotificationService.swift */,
+				999D88172B5FCDA6004B7F68 /* Info.plist */,
+			);
+			path = FlareLaneNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		99F7259C2B2C5DF700F7A702 = {
 			isa = PBXGroup;
 			children = (
 				99F725A72B2C5DF700F7A702 /* petraschu */,
+				999D88142B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension */,
 				99F725A62B2C5DF700F7A702 /* Products */,
+				13F1FE38F7D718E10E328FA3 /* Pods */,
+				F3BDC1D0294702E674B81978 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				99F725A52B2C5DF700F7A702 /* petraschu.app */,
+				999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,6 +133,7 @@
 		99F725A72B2C5DF700F7A702 /* petraschu */ = {
 			isa = PBXGroup;
 			children = (
+				999D880E2B5FCD81004B7F68 /* petraschu.entitlements */,
 				99F725A82B2C5DF700F7A702 /* AppDelegate.swift */,
 				99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */,
 				99F725AC2B2C5DF700F7A702 /* ViewController.swift */,
@@ -75,20 +147,51 @@
 			path = petraschu;
 			sourceTree = "<group>";
 		};
+		F3BDC1D0294702E674B81978 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F73857EDDE95C3548A7E110A /* Pods_FlareLaneNotificationServiceExtension.framework */,
+				BEF97E8AF85892A273A6726A /* Pods_petraschu.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		99F725A42B2C5DF700F7A702 /* petraschu */ = {
+		999D88122B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu" */;
+			buildConfigurationList = 999D881B2B5FCDA6004B7F68 /* Build configuration list for PBXNativeTarget "FlareLaneNotificationServiceExtension" */;
 			buildPhases = (
-				99F725A12B2C5DF700F7A702 /* Sources */,
-				99F725A22B2C5DF700F7A702 /* Frameworks */,
-				99F725A32B2C5DF700F7A702 /* Resources */,
+				E20425F3F9842FED5AA1F1E0 /* [CP] Check Pods Manifest.lock */,
+				999D880F2B5FCDA6004B7F68 /* Sources */,
+				999D88102B5FCDA6004B7F68 /* Frameworks */,
+				999D88112B5FCDA6004B7F68 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = FlareLaneNotificationServiceExtension;
+			productName = FlareLaneNotificationServiceExtension;
+			productReference = 999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		99F725A42B2C5DF700F7A702 /* petraschu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 99F725B92B2C5DF800F7A702 /* Build configuration list for PBXNativeTarget "petraschu" */;
+			buildPhases = (
+				8332480388A534EC320BA0D9 /* [CP] Check Pods Manifest.lock */,
+				99F725A12B2C5DF700F7A702 /* Sources */,
+				99F725A22B2C5DF700F7A702 /* Frameworks */,
+				99F725A32B2C5DF700F7A702 /* Resources */,
+				999D881E2B5FCDA6004B7F68 /* Embed Foundation Extensions */,
+				842971C4F07155E50246DB54 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				999D88192B5FCDA6004B7F68 /* PBXTargetDependency */,
 			);
 			name = petraschu;
 			productName = petraschu_APP;
@@ -102,9 +205,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					999D88122B5FCDA6004B7F68 = {
+						CreatedOnToolsVersion = 15.1;
+					};
 					99F725A42B2C5DF700F7A702 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -125,11 +231,19 @@
 			projectRoot = "";
 			targets = (
 				99F725A42B2C5DF700F7A702 /* petraschu */,
+				999D88122B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		999D88112B5FCDA6004B7F68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99F725A32B2C5DF700F7A702 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -143,7 +257,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8332480388A534EC320BA0D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-petraschu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		842971C4F07155E50246DB54 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-petraschu/Pods-petraschu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-petraschu/Pods-petraschu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-petraschu/Pods-petraschu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E20425F3F9842FED5AA1F1E0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FlareLaneNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		999D880F2B5FCDA6004B7F68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				999D88162B5FCDA6004B7F68 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		99F725A12B2C5DF700F7A702 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -156,6 +342,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		999D88192B5FCDA6004B7F68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 999D88122B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension */;
+			targetProxy = 999D88182B5FCDA6004B7F68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		99F725AE2B2C5DF700F7A702 /* Main.storyboard */ = {
@@ -179,6 +373,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		999D881C2B5FCDA6004B7F68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 209332C7CE9B3EF01CEC97E6 /* Pods-FlareLaneNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L47A4526FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlareLaneNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlareLaneNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmpnetworks.petraschu.FlareLaneNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		999D881D2B5FCDA6004B7F68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 61CDC219DAD1C032F5F031D9 /* Pods-FlareLaneNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = L47A4526FL;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FlareLaneNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlareLaneNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.dmpnetworks.petraschu.FlareLaneNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		99F725B72B2C5DF800F7A702 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -217,7 +465,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -281,7 +529,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -302,11 +550,14 @@
 		};
 		99F725BA2B2C5DF800F7A702 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C69581F9B592357D2355CC8F /* Pods-petraschu.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = petraschu/petraschu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L47A4526FL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = petraschu/Info.plist;
@@ -324,7 +575,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.3;
+				MARKETING_VERSION = 1.9.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmpnetworks.petraschu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -337,11 +588,14 @@
 		};
 		99F725BB2B2C5DF800F7A702 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0D48B076B0598F1F7963FF8 /* Pods-petraschu.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = petraschu/petraschu.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L47A4526FL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = petraschu/Info.plist;
@@ -359,7 +613,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9.3;
+				MARKETING_VERSION = 1.9.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmpnetworks.petraschu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -373,6 +627,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		999D881B2B5FCDA6004B7F68 /* Build configuration list for PBXNativeTarget "FlareLaneNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				999D881C2B5FCDA6004B7F68 /* Debug */,
+				999D881D2B5FCDA6004B7F68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		99F725A02B2C5DF700F7A702 /* Build configuration list for PBXProject "petraschu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
