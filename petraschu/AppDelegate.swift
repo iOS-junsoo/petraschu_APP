@@ -39,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FlareLaneAppDelegate.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
       }
 
-
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {

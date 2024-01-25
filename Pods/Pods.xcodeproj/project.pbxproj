@@ -85,7 +85,7 @@
 		8F714418421DC371819100FC46EDF827 /* DeviceService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceService.swift; path = FlareLane/Classes/DeviceService.swift; sourceTree = "<group>"; };
 		91D5F72E4FDE347E8C18DDA3D0783525 /* Pods-petraschu.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-petraschu.modulemap"; sourceTree = "<group>"; };
 		9826C1045BBCF8B0D995265A3BD0C0AF /* FlareLaneNotificationReceivedEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlareLaneNotificationReceivedEvent.swift; path = FlareLane/Classes/FlareLaneNotificationReceivedEvent.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E0118754BA0034F0681B2977403BE17 /* Pods-petraschu-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-petraschu-Info.plist"; sourceTree = "<group>"; };
 		A3531E3DB5D1DD60888291946808320D /* Pods-petraschu-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-petraschu-acknowledgements.markdown"; sourceTree = "<group>"; };
 		A3BC3D8E801E2E499E251B45E1F89119 /* ColdStartNotificationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColdStartNotificationManager.swift; path = FlareLane/Classes/ColdStartNotificationManager.swift; sourceTree = "<group>"; };
@@ -200,8 +200,8 @@
 				149EC0329DD58B02537B5505CA679DAA /* EventService.swift */,
 				DE7362EE5B361C315C2033A480703037 /* FlareLane.h */,
 				208F0122F0A869B73234FC2791890ACF /* FlareLane.swift */,
-				C92D2432AA922AD58AD1A4DB04240F37 /* FlareLane+Date.swift */,
 				B9B17CDB59203F72B4DDD8AC2D14780D /* FlareLane+UIDevice.swift */,
+				C92D2432AA922AD58AD1A4DB04240F37 /* FlareLane+Date.swift */,
 				C2BD06A1D96C15C09EB718E0A38DBC1B /* FlareLaneAppDelegate.swift */,
 				B0EA8695B7480ACFFB65F940B807DCBD /* FlareLaneDevice.swift */,
 				5F9957D761B296F1FEC38CC2A3D1435A /* FlareLaneNotifiationCenter.swift */,
@@ -216,7 +216,6 @@
 				2C93D9F7DD0A2C8D22C5AF2AE5BB6CAD /* Request.swift */,
 				3D3E5779F5A3F96C0BE7A45755A6631E /* Support Files */,
 			);
-			name = FlareLane;
 			path = FlareLane;
 			sourceTree = "<group>";
 		};

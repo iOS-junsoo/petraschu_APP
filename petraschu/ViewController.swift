@@ -19,9 +19,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var loginType: String = ""
     var locationManager: CLLocationManager!
     var firstLogin: Bool = false
+    var URL_ALL: URL?
     var URL_HOST: String?
     var URL_PATH: String?
-    
+    private var popupWebView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,13 +65,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         webView.navigationDelegate = self
         webView.uiDelegate = self
+        webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
-        
         loadWebPage("https://www.petraschu.com/")
         webView.allowsBackForwardNavigationGestures = true
         
         
+        
     }
+    
+    
 
     private func loadWebPage(_ url: String) {
         guard let myUrl = URL(string: url) else {
@@ -79,6 +83,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let request = URLRequest(url: myUrl)
         webView.load(request)
     }
+    
+//    func swipeRecognizer() {
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
+//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+//        self.view.addGestureRecognizer(swipeRight)
+//        
+//    }
+//
+//    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+//            switch swipeGesture.direction{
+//            case UISwipeGestureRecognizer.Direction.right:
+//                // 스와이프 시, 원하는 기능 구현.
+//                print("뒤로가버렷")
+//                if webView == popupWebView {
+//                    popupWebView?.removeFromSuperview()
+//                    popupWebView = nil
+//                }
+//            default: break
+//            }
+//        }
+//    }
+
     
    
 
@@ -106,6 +133,7 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
             return
         }
         
+        URL_ALL = url
         URL_HOST = url_Host
         URL_PATH = url_Path
         
@@ -195,6 +223,7 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
     
     
     //MARK: 자바스크립트 처리
+    
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo,
                  completionHandler: @escaping () -> Void) {
 
@@ -255,24 +284,84 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
             if navigationAction.targetFrame == nil { // 새창이 뜨는 상황
-                if URL_HOST == "www.petraschu.com" || URL_HOST == "www.google.com"  { //호스트가 펫트라슈, 구글인 경우 앱 자체에서 URL 전환
-                    webView.load(navigationAction.request)
+                print("새창이 뜹니다.\(URL_HOST)")
+                
+                
+                if URL_HOST == "www.petraschu.com" || URL_HOST == "www.google.com" || URL_HOST == "wauth.teledit.com" || URL_HOST == "www.youtube.com" { //호스트가 펫트라슈, 구글인 경우 앱 자체에서 URL 전환
+//                    webView.load(navigationAction.request) // 회원가입 본인인증 떄문에 바꾼 부분 이전 버전
+                    print("새창이 뜹니다.1")
+                    
+                    popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+                    popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                    popupWebView?.navigationDelegate = self
+                    popupWebView?.uiDelegate = self
+                    popupWebView?.allowsBackForwardNavigationGestures = true
+                    
+                    
+                    if let newWebview = popupWebView {
+                        view.addSubview(newWebview)
+                    }
+                    
+                    let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureHandler(_:)))
+                    popupWebView?.addGestureRecognizer(panGesture)
+                    
+                    return popupWebView ?? nil
+                    
                 } else { //이외의 상황에서는 사파리에서 오픈
                     UIApplication.shared.open(navigationAction.request.url!)
+                    print("새창이 뜹니다.2")
                 }
             }
             return nil
+            
         
     }
+    
+    @objc func panGestureHandler(_ gesture: UIPanGestureRecognizer) {
+            let translation = gesture.translation(in: popupWebView)
+
+            switch gesture.state {
+            case .changed:
+                // 제스처의 변화에 따라 팝업 웹뷰를 이동시킴
+                popupWebView?.transform = CGAffineTransform(translationX: translation.x, y: 0)
+
+            case .ended:
+                // 제스처가 끝날 때, 팝업 웹뷰의 위치에 따라 뒤로가기를 수행 또는 취소
+                if translation.x > popupWebView!.bounds.width / 3 {
+                    // 팝업 웹뷰가 화면의 반 이상으로 이동하면 뒤로가기 수행
+                    popupWebView?.removeFromSuperview()
+                    popupWebView = nil
+                }
+
+                // 제스처 종료 후 팝업 웹뷰를 원래 위치로 되돌림
+                UIView.animate(withDuration: 0.3) {
+                    self.popupWebView?.transform = .identity
+                }
+
+            default:
+                break
+            }
+        }
+    
+    func webViewDidClose(_ webView: WKWebView) {
+            if webView == popupWebView {
+                popupWebView?.removeFromSuperview()
+                popupWebView = nil
+            }
+        }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         guard let url = webView.url?.absoluteString else {
             return
         }
-        
-        print("리디 \(url)")
 
     }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        print("Failed to load: \(error.localizedDescription)")
+    }
+    
+    
     
 }
 
