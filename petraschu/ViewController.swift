@@ -9,7 +9,7 @@ import WebKit
 import CoreLocation
 import AdSupport
 import AppTrackingTransparency
-
+import FlareLane
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -22,19 +22,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var URL_ALL: URL?
     var URL_HOST: String?
     var URL_PATH: String?
+    var isUrl: String?
     private var popupWebView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
-   
+        
+        
+        //MARK: - 앱 푸쉬 옵저버
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+       
+        //MARK: - 알람 허용 비허용
+        NotificationCenter.default.addObserver(self, selector: #selector(notificationSettingsDidChange(_:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
+        
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
         
        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        //MARK: - 권한 팝업 순서화
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     // 사용자에게 추적 권한을 요청합니다.
                     ATTrackingManager.requestTrackingAuthorization { status in
                         switch status {
@@ -45,37 +54,75 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             print(ASIdentifierManager.shared().advertisingIdentifier)
                             // 위치권한 팝업 함수
                             self.locationManager.requestWhenInUseAuthorization()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            }
                         case .denied:
                             print("Denied, 사용자가 추적을 거부 함")
                             self.locationManager.requestWhenInUseAuthorization()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            }
                         case .notDetermined:
                             print("Not Determined, 추적 권한 요청이 나타나지 않음")
                             self.locationManager.requestWhenInUseAuthorization()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            }
                         case .restricted:
                             print("Restricted, 추적 권한 요청이 제한 됨")
                             self.locationManager.requestWhenInUseAuthorization()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            }
                         @unknown default:
                             print("Unknown")
-                            self.locationManager.requestWhenInUseAuthorization()
+                           
                         }
                     }
                 }
         
-    
+        func checkUserCurrentLocationAuthorization(_ status: CLAuthorizationStatus) {
+            switch status {
+            
+            case .notDetermined:
+                print("사용자가 아직 권한을 결정하지 않음.")
+                
+            case .denied, .restricted:
+                print("사용자가 허용 안함")
+                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                  // Do Something...
+                }
+            case .authorizedWhenInUse:
+                print("사용자가 앱 사용 시 허용")
+                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                  // Do Something...
+                }
+            case .authorizedAlways:
+                print("사용자가 항상 허용")
+                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                  // Do Something...
+                }
+            default:
+                print("Default")
+               
+            }
+        }
         
+        //MARK: - webview 설정
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.configuration.preferences.javaScriptEnabled = true
         webView.configuration.preferences.javaScriptCanOpenWindowsAutomatically = true
+        
         loadWebPage("https://www.petraschu.com/")
         webView.allowsBackForwardNavigationGestures = true
         
         
         
+        
     }
     
-    
-
     private func loadWebPage(_ url: String) {
         guard let myUrl = URL(string: url) else {
             return
@@ -84,27 +131,58 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         webView.load(request)
     }
     
-//    func swipeRecognizer() {
-//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture(_:)))
-//        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
-//        self.view.addGestureRecognizer(swipeRight)
-//        
-//    }
-//
-//    @objc func respondToSwipeGesture(_ gesture: UIGestureRecognizer){
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-//            switch swipeGesture.direction{
-//            case UISwipeGestureRecognizer.Direction.right:
-//                // 스와이프 시, 원하는 기능 구현.
-//                print("뒤로가버렷")
-//                if webView == popupWebView {
-//                    popupWebView?.removeFromSuperview()
-//                    popupWebView = nil
-//                }
-//            default: break
-//            }
-//        }
-//    }
+    
+    
+    
+    @objc func appDidBecomeActive() {
+        
+        FlareLane.setNotificationClickedHandler() { notification in
+            print(notification.url)
+            if notification.url == nil {
+                self.loadWebPage("https://www.petraschu.com/")
+            } else {
+                self.loadWebPage(notification.url ?? "https://www.petraschu.com/")
+            }
+        }
+          
+    }
+
+    
+    
+    //MARK: 알람 권한이 변경되는 것 감지
+    
+    @objc func notificationSettingsDidChange(_ notification: Notification) {
+            // 알림 권한이 변경될 때 호출되는 메서드
+            checkNotificationAuthorization()
+        }
+
+        func checkNotificationAuthorization() {
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                switch settings.authorizationStatus {
+                case .authorized:
+                    print("알림 권한이 허용됨")
+                    FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                    }
+                case .denied:
+                    print("알림 권한이 거부됨")
+                    FlareLane.unsubscribe() { isSubscribed in
+                    }
+                case .notDetermined:
+                    print("아직 알림 권한을 선택하지 않음")
+                case .provisional:
+                    print("Provisional 알림 권한이 부여됨")
+                case .ephemeral:
+                    print("Ephemeral 알림 권한이 부여됨")
+                @unknown default:
+                    break
+                }
+            }
+        }
+
+        deinit {
+            // 옵저버 제거
+            NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+        }
 
     
    
@@ -289,9 +367,11 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
                 
                 if URL_HOST == "www.petraschu.com" || URL_HOST == "www.google.com" || URL_HOST == "wauth.teledit.com" || URL_HOST == "www.youtube.com" { //호스트가 펫트라슈, 구글인 경우 앱 자체에서 URL 전환
 //                    webView.load(navigationAction.request) // 회원가입 본인인증 떄문에 바꾼 부분 이전 버전
-                    print("새창이 뜹니다.1")
+
+                    let safeAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets
+
                     
-                    popupWebView = WKWebView(frame: view.bounds, configuration: configuration)
+                    popupWebView = WKWebView(frame: CGRect(x: 0, y: safeAreaInsets?.top ?? 0, width: view.bounds.width, height: view.bounds.height - (safeAreaInsets?.top ?? 0)), configuration: configuration)
                     popupWebView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
                     popupWebView?.navigationDelegate = self
                     popupWebView?.uiDelegate = self
@@ -309,7 +389,6 @@ extension ViewController: WKNavigationDelegate, WKUIDelegate {
                     
                 } else { //이외의 상황에서는 사파리에서 오픈
                     UIApplication.shared.open(navigationAction.request.url!)
-                    print("새창이 뜹니다.2")
                 }
             }
             return nil

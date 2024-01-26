@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UNUserNotificationCenter.current().delegate = self
         // 알림 권한 팝업 타이밍을 제어하려면 세 번째 파라미터를 false로 설정 후 적절한 시점에 .subscribe() 함수 실행
-        FlareLane.initWithLaunchOptions(launchOptions, projectId: "1f13badc-fe56-429d-8961-d491d6316085", requestPermissionOnLaunch: true)
+        FlareLane.initWithLaunchOptions(launchOptions, projectId: "1f13badc-fe56-429d-8961-d491d6316085", requestPermissionOnLaunch: false)
         return true
     }
 
@@ -38,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         FlareLaneAppDelegate.shared.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
       }
+    
+    
 
 }
 
@@ -46,7 +48,30 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     FlareLaneNotificationCenter.shared.userNotificationCenter(center, willPresent: notification, withCompletionHandler: completionHandler)
   }
   func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+      print("알람 클릭됨")
+      
     FlareLaneNotificationCenter.shared.userNotificationCenter(center, didReceive: response, withCompletionHandler: completionHandler)
+      
   }
+    
+ func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) async -> UIBackgroundFetchResult {
+        print("알람 수신됨")
+     // 비동기 작업을 수행하고 결과를 반환할 때에는 await 키워드를 사용
+             let result = await performAsyncTask()
+             
+             // 비동기 작업의 결과에 따라서 적절한 UIBackgroundFetchResult를 반환
+             switch result {
+             case .success:
+                 return .newData
+             case .failure:
+                 return .failed
+             }
+    }
+    
+    func performAsyncTask() async -> Result<Void, Error> {
+            // 비동기 작업을 여기에 구현
+            return .success(())
+        }
+    
 }
 

@@ -11,6 +11,7 @@
 		997ECBBC2B39852800D4A81F /* 앱 로딩 화면.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */; };
 		999D88162B5FCDA6004B7F68 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999D88152B5FCDA6004B7F68 /* NotificationService.swift */; };
 		999D881A2B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		99E186172B6287DD00BF6045 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E186162B6287DD00BF6045 /* Global.swift */; };
 		99F725A92B2C5DF700F7A702 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725A82B2C5DF700F7A702 /* AppDelegate.swift */; };
 		99F725AB2B2C5DF700F7A702 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */; };
 		99F725AD2B2C5DF700F7A702 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F725AC2B2C5DF700F7A702 /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		999D88132B5FCDA6004B7F68 /* FlareLaneNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FlareLaneNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		999D88152B5FCDA6004B7F68 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		999D88172B5FCDA6004B7F68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99E186162B6287DD00BF6045 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		99F725A52B2C5DF700F7A702 /* petraschu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = petraschu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99F725A82B2C5DF700F7A702 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99F725AA2B2C5DF700F7A702 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				997ECBB72B39841200D4A81F /* LaunchScreenViewController.swift */,
 				99F725B62B2C5DF800F7A702 /* Info.plist */,
 				997ECBBB2B39852800D4A81F /* 앱 로딩 화면.jpg */,
+				99E186162B6287DD00BF6045 /* Global.swift */,
 			);
 			path = petraschu;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				99F725AD2B2C5DF700F7A702 /* ViewController.swift in Sources */,
 				99F725A92B2C5DF700F7A702 /* AppDelegate.swift in Sources */,
 				997ECBB82B39841200D4A81F /* LaunchScreenViewController.swift in Sources */,
+				99E186172B6287DD00BF6045 /* Global.swift in Sources */,
 				99F725AB2B2C5DF700F7A702 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
