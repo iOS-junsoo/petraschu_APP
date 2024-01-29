@@ -53,27 +53,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                             // 사용자가 추적을 허용을 했으므로, IDFA를 사용 가능 함
                             print(ASIdentifierManager.shared().advertisingIdentifier)
                             // 위치권한 팝업 함수
-                            self.locationManager.requestWhenInUseAuthorization()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            
+                            FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                                self.locationManager.requestWhenInUseAuthorization()
+                                print("구독여부: \(isSubscribed)")
                             }
+                           
                         case .denied:
                             print("Denied, 사용자가 추적을 거부 함")
-                            self.locationManager.requestWhenInUseAuthorization()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                                self.locationManager.requestWhenInUseAuthorization()
+                                print("구독여부: \(isSubscribed)")
                             }
                         case .notDetermined:
                             print("Not Determined, 추적 권한 요청이 나타나지 않음")
-                            self.locationManager.requestWhenInUseAuthorization()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                                self.locationManager.requestWhenInUseAuthorization()
+                                print("구독여부: \(isSubscribed)")
                             }
                         case .restricted:
                             print("Restricted, 추적 권한 요청이 제한 됨")
-                            self.locationManager.requestWhenInUseAuthorization()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                checkUserCurrentLocationAuthorization(CLLocationManager.authorizationStatus())
+                            FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
+                                self.locationManager.requestWhenInUseAuthorization()
+                                print("구독여부: \(isSubscribed)")
                             }
                         @unknown default:
                             print("Unknown")
@@ -81,33 +83,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         }
                     }
                 }
-        
-        func checkUserCurrentLocationAuthorization(_ status: CLAuthorizationStatus) {
-            switch status {
-            
-            case .notDetermined:
-                print("사용자가 아직 권한을 결정하지 않음.")
-                
-            case .denied, .restricted:
-                print("사용자가 허용 안함")
-                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
-                  // Do Something...
-                }
-            case .authorizedWhenInUse:
-                print("사용자가 앱 사용 시 허용")
-                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
-                  // Do Something...
-                }
-            case .authorizedAlways:
-                print("사용자가 항상 허용")
-                FlareLane.subscribe(fallbackToSettings: true) { isSubscribed in
-                  // Do Something...
-                }
-            default:
-                print("Default")
-               
-            }
-        }
         
         //MARK: - webview 설정
         webView.navigationDelegate = self
